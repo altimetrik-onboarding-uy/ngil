@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Enter the name of your new Tab</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="tabTitle">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="tabTitle" cdkFocusInitial>Ok</button>
+</div>

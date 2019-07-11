@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+
+  <mat-toolbar-row *ngIf="titleIsClicked && !loadSpinner">
+      <mat-form-field>
+          <input matInput placeholder="Board Title" type="text" [(ngModel)]="title" >
+      </mat-form-field>
+      <span class="spacer"></span>
+      <mat-form-field >
+        <button mat-raised-button class="title-btn-save" type="submit" (click)="onSaveTitle(title)">Save</button>
+      </mat-form-field>
+
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="loadSpinner">
+    <mat-progress-spinner
+      class="example-margin spinner"
+      [color]="color"
+      [mode]="mode"
+      [value]="value">
+    </mat-progress-spinner>
+  </mat-toolbar-row>
+
+
+
+  <mat-toolbar-row *ngIf="!titleIsClicked">
+    <span (click)="onChangeTitle()">{{title}}</span>
+    <span class="spacer"></span>
+    <button mat-raised-button
+            class="example-add-tab-button"
+            (click)="openDialog()">
+      Add new tab
+    </button>
+
+  </mat-toolbar-row>
+
+
+</mat-toolbar>
