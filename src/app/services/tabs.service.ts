@@ -64,6 +64,19 @@ K
 
   }
 
+  deleteCard(cardId, tabId) {
+    this.tabs.map( e => {
+      if (e.id === tabId) {
+        e.cards.map( card => {
+          if (card.id === cardId) {
+            const cardIndex = e.cards.indexOf(card);
+            e.cards.splice(cardIndex, 1);
+          }
+        });
+      }
+    });
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
