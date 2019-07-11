@@ -13,6 +13,7 @@ import {MatButtonToggleModule, MatIconModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import { BoardComponentComponent } from './components/board-component/board-component.component';
 import { DialogComponentComponent } from './components/dialog-component/dialog-component.component';
+import { CardDialogComponent } from './components/card-dialog/card-dialog.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DialogComponentComponent } from './components/dialog-component/dialog-c
     DescriptionComponentComponent,
     BoardComponentComponent,
     DialogComponentComponent,
+    CardDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,6 @@ import { DialogComponentComponent } from './components/dialog-component/dialog-c
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponentComponent]
+  entryComponents: [DialogComponentComponent, CardDialogComponent]
 })
 export class AppModule { }
