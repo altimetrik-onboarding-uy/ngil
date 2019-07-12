@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
+
+// Unique ID function
 const uuid = require('uuid/v1');
+
 @Injectable({
   providedIn: 'root'
 })
 export class TabsService {
-  tabs = [{id: 1, title: 'To Do', cards: [{id: 1, cardTitle: 'Change Title', cardDesc: 'As a User I want the possibility to change the title'}] } , {id: 2, title: 'Doing', cards: [] }];
+  // tslint:disable-next-line:max-line-length
+  // tabs = [{id: 1, title: 'To Do', cards: [{id: 1, cardTitle: 'Change Title', cardDesc: 'As a User I want the possibility to change the title'}] } , {id: 2, title: 'Doing', cards: [] }];
   private newCard: { id: any, cardDesc: any; cardTitle: any };
   private newTab: { id: any; title: any; cards: any[] };
-K
+  private tabs = [];
   // tslint:disable-next-line:variable-name
   constructor(private _snackBar: MatSnackBar) {
   }
@@ -17,15 +21,16 @@ K
     return this.tabs;
   }
 
-
+// Add a tab to an Array
   addTab(tabTitle) {
-    if (tabTitle !== '' || tabTitle === undefined) {
+  console.log(` tab title: ${tabTitle}`);
+  if (tabTitle !== '' || tabTitle === undefined) {
       this.newTab = {
         id: uuid(),
         title: tabTitle,
         cards: []
       };
-     console.table(this.newTab);
+      console.table(this.newTab);
       // @ts-ignore
       this.tabs.push(this.newTab);
       this.openSnackBar(`The tab ${tabTitle} was created successfully`, 'OK');
@@ -33,7 +38,7 @@ K
       alert(`The name couldn't be empty`);
     }
   }
-
+// Add a card to a tab
   addCard(card, tabId) {
     this.newCard = {
       id: uuid(),
@@ -48,7 +53,7 @@ K
     });
     console.table(this.tabs);
   }
-
+// Edit a card by tabId and  cardId
   editCard(result, cardId, tabId) {
     this.tabs.map( (e) => {
       if (e.id === tabId) {
@@ -63,7 +68,7 @@ K
     });
 
   }
-
+// Delete a card by tabId and cardId
   deleteCard(cardId, tabId) {
     this.tabs.map( e => {
       if (e.id === tabId) {

@@ -34,7 +34,7 @@ export class TitleBarComponentComponent implements OnInit {
       this.tabTitle = result;
       console.log(result);
       // tslint:disable-next-line:triple-equals
-      if (result != 'undefined' || result != '') {
+      if (result !== 'undefined' && result != '' && result != null) {
         this.tab.addTab(this.tabTitle);
       }
 
