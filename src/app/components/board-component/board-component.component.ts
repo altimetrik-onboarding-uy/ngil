@@ -20,7 +20,6 @@ export class BoardComponentComponent implements OnInit {
 
   //Delete tab
   removeTab(index: number) {
-    console.log(`remove log ${index}`);
     this.tabs.splice(index, 1);
   }
 
@@ -30,16 +29,12 @@ export class BoardComponentComponent implements OnInit {
 
   //Open Dialog
   openDialog(tab): void {
-    console.log(`Im the index ${tab}`);
-    console.table(tab.id);
     const dialogRef = this.dialog.open(CardDialogComponent, {
       width: '250',
       data:  {tabId: tab.id , cardTitle: '', cardDesc: '' },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.tabTitle = result;
-      console.log(`Result ${result}`);
       // tslint:disable-next-line:triple-equals
       if (result != 'undefined' || result != '') {
         this.tab.addCard(result, tab.id);

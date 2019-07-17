@@ -3,11 +3,13 @@ import { BoardComponentComponent} from '../board-component/board-component.compo
 import {CardDialogComponent} from '../card-dialog/card-dialog.component';
 import {MatDialog} from '@angular/material';
 import {TabsService} from '../../services/tabs.service';
+import {Card} from '../../models/card';
 
 export interface DialogData {
-  animal: string;
   name: string;
 }
+
+
 
 @Component({
   selector: 'app-card-component',
@@ -15,10 +17,7 @@ export interface DialogData {
   styleUrls: ['./card-component.component.css']
 })
 export class CardComponentComponent implements OnInit {
-  @Input() title: string;
-  @Input() description: string;
-  @Input() tabId: string;
-  @Input() cardId: string;
+  @Input() card: Card;
   cardResult: any[] = [];
   constructor(private tab: TabsService, public dialog: MatDialog) {
   }
@@ -27,19 +26,14 @@ export class CardComponentComponent implements OnInit {
   }
 
   editCard(cardId, tabId): void {
-    console.log(`Im the index ${cardId}`);
-    console.log(`Log: ${this.title} and ${this.description}`);
     const dialogRef = this.dialog.open(CardDialogComponent, {
       width: '250',
-      data:  {cId: cardId, tId: tabId, cardTitle: this.title, cardDesc: this.description},
+      data:  {cId: cardId, tId: tabId, cardTitle: this.card.title, cardDesc: this.card.description},
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.cardResult = result;
-      console.log(result);
       // tslint:disable-next-line:triple-equals
       if (result != 'undefined' || result != '') {
-        console.log(`Result : ${result} - cardId ${cardId} - tabId ${tabId}`);
         this.tab.editCard(result, cardId, tabId);
       }
 

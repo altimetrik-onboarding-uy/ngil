@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {DialogData} from '../card-component/card-component.component';
+import {Card} from '../../models/card';
 
 @Component({
   selector: 'app-card-dialog',
@@ -8,9 +9,7 @@ import {DialogData} from '../card-component/card-component.component';
   styleUrls: ['./card-dialog.component.css']
 })
 export class CardDialogComponent implements OnInit {
-  cardTitle = '';
-  cardDesc  = '';
-  tabId     = '';
+  card: Card;
   data: any;
 
   constructor( public dialogRef: MatDialogRef<CardDialogComponent>,
@@ -19,9 +18,9 @@ export class CardDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.cardTitle = '';
-    this.cardDesc  = '';
-    this.tabId     = '';
+    this.card.title = '';
+    this.card.description = '';
+    this.card.tabId = '';
     this.dialogRef.close();
   }
   ngOnInit() {

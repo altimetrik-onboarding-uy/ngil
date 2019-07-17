@@ -30,14 +30,11 @@ export class TitleBarComponentComponent implements OnInit {
       width: '250',
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.tabTitle = result;
-      console.log(result);
       // tslint:disable-next-line:triple-equals
       if (result !== 'undefined' && result != '' && result != null) {
         this.tab.addTab(this.tabTitle);
       }
-
     });
   }
   //Change Title Function
@@ -50,8 +47,6 @@ export class TitleBarComponentComponent implements OnInit {
       this.loadSpinner = false;
       this.titleIsClicked = false;
     } , 1000);
-
-
   }
   ngOnInit(): void {
 
