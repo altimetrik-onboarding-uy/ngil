@@ -27,7 +27,6 @@ export class TabsService {
         title: tabTitle,
         cards: []
       };
-      console.table(this.newTab);
       // @ts-ignore
       this.tabs.push(this.newTab);
       this.openSnackBar(`The tab ${tabTitle} was created successfully`, 'OK');
@@ -43,13 +42,11 @@ export class TabsService {
       description: card[1],
       tabId: tabId
     };
-    console.table(this.tabs);
     this.tabs.map( (e) => {
       if (e.id === tabId) {
         e.cards.push(this.newCard);
       }
     });
-    console.table(this.tabs);
   }
 // Edit a card by tabId and  cardId
   editCard(result, cardId, tabId) {
