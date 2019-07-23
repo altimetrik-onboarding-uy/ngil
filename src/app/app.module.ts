@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TitleBarComponentComponent } from './components/title-bar-component/title-bar-component.component';
-import { ColumnComoponentComponent } from './components/column-comoponent/column-comoponent.component';
 import { CardComponentComponent } from './components/card-component/card-component.component';
 import { DescriptionComponentComponent } from './components/description-component/description-component.component';
 
@@ -20,7 +19,6 @@ import { CardDialogComponent } from './components/card-dialog/card-dialog.compon
   declarations: [
     AppComponent,
     TitleBarComponentComponent,
-    ColumnComoponentComponent,
     CardComponentComponent,
     DescriptionComponentComponent,
     BoardComponentComponent,

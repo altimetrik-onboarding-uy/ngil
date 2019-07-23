@@ -50,12 +50,12 @@ export class TabsService {
   }
 // Edit a card by tabId and  cardId
   editCard(result, cardId, tabId) {
-    this.tabs.map( (e) => {
-      if (e.id === tabId) {
-        e.cards.map(card => {
-          if (card.id === cardId) {
-            card.cardTitle = result[0];
-            card.cardDesc  = result[1];
+    this.tabs.map( (tab) => {
+      if (tab.id === tabId) {
+        tab.cards.map(card => {
+          if (card.cardId === cardId) {
+            card.title        = result[0];
+            card.description  = result[1];
           // return {...card, cardTitle: result[0], cardDesc: result[1] };
           }
         });
@@ -65,10 +65,12 @@ export class TabsService {
   }
 // Delete a card by tabId and cardId
   deleteCard(cardId, tabId) {
+    console.log(this.tabs);
     this.tabs.map( e => {
       if (e.id === tabId) {
         e.cards.map( card => {
-          if (card.id === cardId) {
+          if (card.cardId === cardId) {
+            console.log('entre');
             const cardIndex = e.cards.indexOf(card);
             e.cards.splice(cardIndex, 1);
           }

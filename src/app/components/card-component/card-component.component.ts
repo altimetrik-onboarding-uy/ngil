@@ -42,6 +42,7 @@ export class CardComponentComponent implements OnInit {
 
   deleteCard(cardId, tabId) {
     this.tab.deleteCard(cardId, tabId);
+    console.log(`Deleting ${cardId} in tab ${tabId}`);
   }
 
 }
